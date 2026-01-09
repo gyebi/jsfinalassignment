@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Dashboard Project</title>
+    <link rel="stylesheet" href="apistyle.css" />
+</head>
+
+<body>
+    <h1 class="main-title">JavaScript API Dashboard</h1>
+    <div class="grid-container">
+      
+
+      
+
+        <section class="grid-item" id="weather-api">
+            <h2>☀️ Weather Info</h2>
+
+            <div class="card">
+                <div class="search">
+                    <input type="text" placeholder="Enter city name" spellcheck="false" />
+                    <button><img src="images/search.png" /></button>
+                </div>
+                <div class="weather">
+                    <img class="weather-icon" src="images/clear.png"  />
+                    <h1 class="temp">25°C</h1>
+                    <h2 class="city">City Name</h2>
+                    <div class="details">
+                        <div class="col">
+                            <img class="humidity-icon" src="images/humidity.png" alt="humidity icon" />
+                            <div>
+                                <p class="humidity">50%</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <img class="wind-icon" src="images/wind.png" alt="wind icon" />
+                            <div>
+                                <p class="wind">15 km/h</p>
+                                <p>Wind Speed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="output" id="weather-output"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
