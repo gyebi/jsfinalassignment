@@ -11,20 +11,35 @@
 <body>
     <h1 class="main-title">JavaScript API Dashboard</h1>
     <div class="grid-container">
-      
+        <section class="grid-item applet-card" id="dog-api">
+            <h2>🐶 Random Dog</h2>
+            <button id="get-dog-button">Get Dog</button>
+            <div class="output" id="dog-output">
+                <img id="dog-image" alt="Random Dog" style="display:none;" />
+                <p id="extra-text">Dog Info</p>
+            </div>
+        </section>
 
-      
+        <section class="grid-item applet-card" id="cat-api">
+            <h2>🐱 Random Cat</h2>
+            <button id="get-cat-button">Get Cat</button>
 
-        <section class="grid-item" id="weather-api">
+            <div class="output" id="cat-output">
+                <img id="cat-image" alt="Random Cat" style="display:none;" />
+                <p class="cat-breed" id="cat-breed"></p>
+            </div>
+        </section>
+
+        <section class="grid-item applet-card" id="weather-api">
             <h2>☀️ Weather Info</h2>
 
             <div class="card">
                 <div class="search">
-                    <input type="text" placeholder="Enter city name" spellcheck="false" />
+                    <input type="text" placeholder="Enter city name" spellcheck="true" />
                     <button><img src="images/search.png" /></button>
                 </div>
                 <div class="weather">
-                    <img class="weather-icon" src="images/clear.png"  />
+                    <img class="weather-icon" src="images/clear.png" />
                     <h1 class="temp">25°C</h1>
                     <h2 class="city">City Name</h2>
                     <div class="details">
@@ -48,6 +63,97 @@
             </div>
         </section>
 
+        <section class="grid-item applet-card" id="currency-api">
+            <h2>💱 Currency Rates</h2>
+            <button id="get-currency-button">Get Rates</button>
+
+
+            <div class="curr-input" id="currency-inp">
+                <label for="currency-input">Amount in USD:</label>
+                <input type="text" id="currency-amount" placeholder="Amount (e.g., 40)" />
+
+                <label for="currency-input">Currency code (e.g., EUR):</label>
+                <input type="text" id="tocurr-code" placeholder="Currency code (e.g., EUR)" />
+
+
+            </div>
+
+            <div class="curr-output" id="currency-output">
+
+                <p id="currency-result" class="curr-ex-final"> Exrates Here</p>
+            </div>
+
+
+        </section>
+
+        <section class="grid-item applet-card" id="movies-api">
+            <h2>🎬 Movies Explorer</h2>
+
+            <div class="movie-controls">
+                <select id="movie-year">
+                    <option value="">Select Year</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                </select>
+
+                <select id="movie-genre">
+                    <option value="">Select Genre</option>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Animation">Animation</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Adventure">Adventure</option>
+                </select>
+
+                <button id="get-movies-button">Get Movies</button>
+            </div>
+
+            <div class="movies-output" id="movies-output">
+                <!-- Movie cards will be injected here -->
+            </div>
+        </section>
+
+
+        <section class="grid-item applet-card" id="github-api">
+        <h2>🧑‍💻 GitHub User</h2>
+
+        <div class="field" id = "paramaters">
+
+            <label for="country">Country</label>
+            <input type="text" id="country" placeholder="eg. Ghana" />
+
+            <label for="language">Language</label>
+            <input type="text" id="language" placeholder="eg. Javascript" />
+
+            <label for="pages">Number of Records</label>
+            <input type="text" id="num-records" placeholder="eg. 100" />
+
+        </div>
+
+        <button id="gitUser" class="gitUser">Get User</button>
+        <div id="results"></div>
+        <button id = "loadMore">Load More >></button>
+
+        <div class="output" id="github-output"></div>
+        </section>
+
+        <section class="grid-item applet-card" id="joke-api">
+            <h2>🤣 Random Joke</h2>
+            <button onclick="getJoke()">Get Joke</button>
+            <div class="output" id="joke-output"></div>
+        </section>
+
+        <section class="grid-item applet-card" id="public-api">
+            <h2>📚 Public APIs</h2>
+            <button onclick="getPublicApiInfo()">Show One</button>
+            <div class="output" id="publicapi-output"></div>
+        </section>
     </div>
 
     <script src="script.js"></script>

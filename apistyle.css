@@ -10,6 +10,13 @@
       padding: 2rem;
     }
 
+    .grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
     .main-title {
       text-align: center;
       margin-bottom: 2rem;
@@ -64,6 +71,36 @@
       border-radius: 5px;
       margin-top: 0.5rem;
     }
+
+    .applet-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+
+
+    .applet-card:hover {
+  transform: translateY(-5px);    
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.applet-card.focused {
+  transform: scale(1.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  position: relative;
+}
+
+
+.grid-container.focus-mode .applet-card:not(.focused) {
+  filter: blur(4px);
+  opacity: 0.4;
+  pointer-events: none;
+}
 
     .card{
       background: linear-gradient(135deg, #00feba ,#5b548a);
@@ -135,30 +172,444 @@
     .details{
       display: flex;
       justify-content: space-between;
-      margin-top: 30px;
-      padding: 10px;
-    }
-
-    .details .col{
-      display: flex;
       align-items: center;
-      text-align: left;
-
+      gap: 20px;
+      margin-top: 30px;
+      
     }
 
-    .details .col .img{
-      width: 30px;
-      margin-right: 15px;
+  
+    .details .col div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+    .humidity-icon, .wind-icon {
+      width: 40px;
+      height: auto;
     }
 
     .humidity, .wind{
-      font-size: 18px;
-      margin-top: -6px;
+      font-size: 15px;
+      margin:0;
     }
 
     .weather{
       display: none;
     }
+
+.dog-output {
+  display: none;
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.dog-breed {
+  margin-top: 8px;
+  font-style: italic;
+  color: #555;
+}
+
+.curr-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+.curr-input label {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.curr-input input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.curr-input input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+button.convert-btn {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+
+/* ===============================
+   App Card
+================================ */
+.applet-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+}
+
+.applet-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ===============================
+   Controls
+================================ */
+.movie-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.movie-controls select,
+.movie-controls button {
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+  background: #cacbd0;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.movie-controls select {
+  min-width: 150px;
+}
+
+.movie-controls select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.movie-controls button {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #022c22;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.movie-controls button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(34, 197, 94, 0.35);
+}
+
+.movie-controls button:active {
+  transform: translateY(0);
+}
+
+/* ===============================
+   Movies Grid
+================================ */
+.movies-output {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.2rem;
+}
+
+/* ===============================
+   Movie Card
+================================ */
+.movie-card {
+  background: #020617;
+  border-radius: 0px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card-content {
+  padding: 0.1rem;
+}
+
+.movie-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.movie-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===============================
+   Empty / Loading States
+================================ */
+.movies-output p {
+  grid-column: 1 / -1;
+  text-align:justify;
+  color: var(--text-muted);
+  padding: 0rem 0rem;
+}
+
+.summary{
+  font-size: 0.85rem;
+  color: #9ca3af;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;      /* 👈 number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.summary.expanded{
+   -webkit-line-clamp: initial;   /* ✅ better than unset */
+  overflow: visible;
+  display: block; 
+}
+
+.toggle-summary {
+  background: none;
+  border: none;
+  color: #22c55e;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0.3rem 0 0.6rem;
+}
+
+.toggle-summary:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   Responsive Tweaks
+================================ */
+@media (max-width: 600px) {
+  .applet-card {
+    padding: 1.2rem;
+  }
+
+  .movie-controls {
+    flex-direction: column;
+  }
+
+  .movie-controls select,
+  .movie-controls button {
+    width: 100%;
+  }
+}
+/* ===============================
+ End of Movie CSS 
+================================ */
+
+/* ===============================
+   Beginning of GitHub CSS 
+================================ */
+
+
+/* Wrap everything in a centered panel if you want */
+.output,
+#results,
+#github-output{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Button */
+#gitUser{
+  appearance: none;
+  border: 1px solid rgba(34,197,94,.35);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #161616;
+  font-weight: 800;
+  padding: 12px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  margin-bottom: 14px;
+}
+
+#gitUser:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(34,197,94,.22);
+  filter: brightness(1.03);
+}
+
+#gitUser:active{
+  transform: translateY(0);
+}
+
+/* Results container */
+#results{
+  padding: 14px;
+  margin-top: 8px;
+}
+
+/* If you append <p> items, make them look like rows/cards */
+#results p{
+  padding: 12px 12px;
+  border: 1px solid rgba(255,255,255,.10);
+  background:#3f60a7;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+/* Optional: make usernames pop */
+#results p strong{
+  font-weight: 900;
+}
+
+/* Optional: link styling inside results */
+#results a{
+  color: rgba(231,238,252,.90);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(231,238,252,.20);
+}
+
+#results a:hover{
+  color: #bfffd8;
+  border-bottom-color: rgba(34,197,94,.55);
+}
+
+/* Output area (for detailed profile later) */
+#github-output{
+  padding: 14px;
+  margin-top: 14px;
+}
+
+/* Small helper text */
+.muted{
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.user-card{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  background: rgba(15,26,48,.55);
+}
+
+.user-card img{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+.user-info h3{
+  margin: 0;
+  font-size: 1rem;
+}
+
+.user-info a{
+  font-size: .9rem;
+  color: #22c55e;
+  text-decoration: none;
+}
+
+.user-info a:hover{
+  text-decoration: underline;
+}
+
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  color: black;
+}
+
+ .field label {
+  font-size: 0.9rem;
+  color: Black;
+}
+
+.field input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#loadMore{
+  appearance: none;
+  border: 1px solid rgba(34,197,94,.35);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #1d1d1d;
+  font-weight: 800;
+  padding: 12px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  margin-bottom: 14px;
+  margin-top: 14px;
+}
+
+#loadMore:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(47, 116, 176, 0.22);
+    filter: brightness(1.03);
+}
+
+
+
+@media (max-width: 600px){
+  body{ padding: 16px; }
+  .gitUser{ width: 100%; }
+}
+
+/* ===============================
+ End of GitHub CSS 
+================================ */
+
+
+
+
 
 
 
